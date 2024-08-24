@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="Css/Estilo.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Tareas</h1>
+        <form id="taskForm">
+            <input type="text" id="taskInput" placeholder="Escribe una tarea..." required>
+            <button type="submit">Agregar</button>
+        </form>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        document.getElementById('taskForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const taskValue = document.getElementById('taskInput').value;
+
+            const li = document.createElement('li');
+            li.textContent = taskValue;
+
+            li.addEventListener('dblclick', function() {
+                this.remove();
+            });
+
+            document.getElementById('taskList').appendChild(li);
+
+            document.getElementById('taskInput').value = '';
+        });
+    </script>
+</body>
+</html>
